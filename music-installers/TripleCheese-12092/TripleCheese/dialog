@@ -1,0 +1,14 @@
+#! /bin/bash
+
+DIALOG="$(readlink -f $0)"
+
+if [[ "$(uname -m)" = x86_64 ]]; then
+  DIALOG="$DIALOG.64"
+else
+  DIALOG="$DIALOG.32"
+fi
+
+unset LD_LIBRARY_PATH
+
+export GDK_BACKEND=x11
+exec "$DIALOG" "$@"

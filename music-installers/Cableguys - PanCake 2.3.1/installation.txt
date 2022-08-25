@@ -1,0 +1,24 @@
+
+=====================================================
+Windows
+=====================================================
+
+Please remove PanCake 2.0.2 first if you have it
+installed.
+
+For installation, simply double-click the Setup-file.
+
+PanCake 2 can open all songs and presets made with
+PanCake 1.x.
+
+The plugin is in 32- and 64-bit for VST.
+
+On questions, please contact us via this page:
+http://www.cableguys.com/contact.html
+
+For latest downloads, visit:
+http://www.cableguys.com/products.html
+
+
+Thanks!
+The Cableguys Team

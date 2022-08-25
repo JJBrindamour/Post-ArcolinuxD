@@ -1,0 +1,2 @@
+ALTERNATIVE name='Original' filename='TripleCheese_orig.txt'
+INCLUDE filename='default'

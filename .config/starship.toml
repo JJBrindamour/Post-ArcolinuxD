@@ -1,0 +1,14 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$directory$cmd_duration$character"
+
+[directory]
+format = "[$path](bold blue) "
+
+[character]
+success_symbol = "[λ](bold green)"
+error_symbol = "[λ](bold red)"
+
+[cmd_duration]
+min_time = 1000
+format = "[took](bold yellow) [$duration](bold yellow) "

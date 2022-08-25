@@ -1,0 +1,82 @@
+# make sxhkd reload its configuration files
+super + Escape
+        pkill -USR1 -x sxhkd
+
+# quit or restart bspwm
+super + shift + {q,r}
+        bspc {quit,wm -r}
+
+# create a new terminal window or swap the current one to the biggest one in the screen
+super + {_,shift + }Return
+        {alacritty, bspc node -s biggest.local}
+
+# close or kill a window
+super + {_,shift + }BackSpace
+        bspc node -{k,c}
+
+# change the window state
+alt + {t, shift + t, f, shift + f}
+        bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# expand a window by moving one of its side outward
+ctrl + alt + {Left,Down,Up,Right}
+        bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# preselect the direction
+alt + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+ctrl + alt + {1-9}
+	bspc node -o 0.{1-9}
+
+# contract a window by moving one of its side inward
+ctrl + alt + shift + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+ctrl + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# focus or send a window to the given desktop
+super + {_,shift + }{1-9,0}
+        bspc {desktop -f,node -d} '^{1-9,10}'
+
+# cycle monitors
+super + bracket{left,right}
+	bspc monitor -f {prev,next}
+
+# cycle desktops
+super + {Left,Right}
+	bspc desktop -f {prev,next}
+
+super + shift + {left,right}
+	{bspc node -d prev && bspc desktop -f prev,bspc node -d next && bspc desktop -f next} 
+
+super + ctrl + {left,right}
+	bspc node -d {prev,next}
+
+# cycle nodes
+shift + {left,down,up,right}
+	bspc node -f {west,south,north,east}
+
+# apps
+super + {b, f, ctrl + f, e, shift + e, p, space}
+	{firefox, thunar, alacritty -e ranger, geany, alacritty -e vim, color-gpick, ~/.config/rofi/bin/launcher}
+
+# logout
+super + x
+    ~/.config/rofi/bin/powermenu
+
+# volume control
+super + v + {equal,minus}
+	pamixer {-i,-d} 5
+
+XF86AudioRaiseVolume
+	pamixer -i 5
+
+XF86AudioLowerVolume
+	pamixer -d 5
+
+XF86AudioMute
+	pamixer -t

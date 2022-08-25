@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Set Displays
+xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output DP3 --off --output HDMI1 --mode 1600x900 --pos 1366x0 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VGA1 --off --output VIRTUAL1 --off
+
+## Kill if already running
+killall -9 xfsettingsd picom polybar dunst ksuperkey xfce4-power-manager
+
+## Restore Wallpaper
+nitrogen --restore
+
+## xfce4-settings daemon
+xfsettingsd &
+
+## polkit agent
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/lib/xfce-polkit/xfce-polkit &
+fi
+
+## Enable power management
+xfce4-power-manager &
+
+## Start Compositing Manager
+exec picom &
+
+## Launch Polybar
+bash ~/.config/polybar/launch.sh
+
+## Notification Daemon
+exec dunst &
+
+## Launch Plank
+exec plank -n dock1 &
+exec plank -n dock2 &
+
+pamixer --set-volume 55 &
+
+## Enable Super Keys For Menu
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
+

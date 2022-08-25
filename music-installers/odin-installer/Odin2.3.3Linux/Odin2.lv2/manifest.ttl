@@ -1,0 +1,31 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix pset: <http://lv2plug.in/ns/ext/presets#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
+
+<https://thewavewarden.com/odin2>
+    a lv2:Plugin ;
+    lv2:binary <Odin2.so> ;
+    rdfs:seeAlso <Odin2.ttl> .
+
+<https://thewavewarden.com/odin2#ExternalUI>
+    a <http://kxstudio.sf.net/ns/lv2ext/external-ui#Widget> ;
+    ui:binary <Odin2.so> ;
+    lv2:requiredFeature <http://lv2plug.in/ns/ext/instance-access> ;
+    lv2:optionalFeature ui:touch ;
+    lv2:extensionData <http://kxstudio.sf.net/ns/lv2ext/programs#UIInterface> .
+
+<https://thewavewarden.com/odin2#ParentUI>
+    a ui:X11UI ;
+    ui:binary <Odin2.so> ;
+    lv2:requiredFeature <http://lv2plug.in/ns/ext/instance-access> ;
+    lv2:optionalFeature ui:idleInterface, ui:noUserResize, ui:touch ;
+    lv2:extensionData ui:idleInterface, <http://kxstudio.sf.net/ns/lv2ext/programs#UIInterface> .
+
+<https://thewavewarden.com/odin2#preset001>
+    a pset:Preset ;
+    lv2:appliesTo <https://thewavewarden.com/odin2> ;
+    rdfs:label "" ;
+    rdfs:seeAlso <presets.ttl> .
+
+

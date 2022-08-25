@@ -1,0 +1,19 @@
+INSTALL NOTES on Windows
+
+With Installer (VST/VST3):
+
+- Double click on installer to launch it. 
+- Follow the instruction.
+- Done !
+
+OR
+
+Direct install of VST/VST3  :
+
+Go in Direct Install folder.
+Drag & Drop the VST/VST3 file into your usual VST/VST3 folder.
+Done !
+
+Note : we deliver VST only for testing purposes, and only during release of our first product.
+
+In case of trouble, feel free to contact us FKFX.contact@gmail.com
